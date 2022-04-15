@@ -1,0 +1,133 @@
+#:import utils kivy.utils
+
+<InfoLabel@Label>
+    font_size: '13sp'
+    text_size: self.width-20, None
+    color: 0, 0, 0, 1
+    font_name: "font/DroidSansFallback.ttf"
+<MainInfo>
+    orientation: 'vertical'
+    BoxLayout:
+        InfoLabel:
+            text: '昵称'
+            text_size: None, None
+            halign: 'left'
+        InfoLabel:
+            text: '星河'
+        InfoLabel:
+            text: 'ID'
+        InfoLabel:
+            text: '999999'
+            text_size: self.width+20, None
+        InfoLabel:
+            text: '水晶'
+        InfoLabel:
+            text: '9999'
+            halign: 'left'
+            text_size: None, None
+    BoxLayout:
+        InfoLabel:
+            text: '资源'
+        InfoLabel:
+			id: _resources
+            text: '0'
+        InfoLabel:
+			id: _resources_increase
+            text: '0/s'
+    BoxLayout:
+        InfoLabel:
+            text: '人口'
+        InfoLabel:
+			id: _residents
+            text: '0'
+        InfoLabel:
+			id: _residents_increase
+            text: '0/m'
+            
+<FuncButton@Button>
+    font_size: '18sp'
+    font_name: "font/DroidSansFallback.ttf"
+<FuncMenu>
+    FuncButton:
+        text: u'管理'
+        background_color: .3, .4, 0, 1
+    FuncButton:
+        text: u'建筑'
+        background_color: 0, 1, 0, 1
+    FuncButton:
+        text: u'军事'
+        background_color: .3, 0, .7, 1
+    FuncButton:
+        text: u'战争'
+        background_color: .5, 0, .5, 1
+    FuncButton:
+        text: u'商店'
+        background_color: 1, 0, 1, 1
+    FuncButton:
+        text: u'消息'
+        background_color: 1, 0, 0, 1
+
+<ManageLabel@Label,ManageButton@Button>
+    font_size: '13sp'
+    font_name: "font/DroidSansFallback.ttf"
+    color: 0, 0, 0, 1
+
+<ManagePage>
+    ManageLabel:
+        pos_hint: {'x': .1, 'center_y': .9}
+        text: u'劳动人口'
+        size_hint: .2, .05
+    ManageLabel:
+		id: _labors
+        pos_hint: {'x': .65, 'center_y': .9}
+        text: u'0'
+        size_hint: .2, .05
+    ManageLabel:
+        pos_hint: {'x': .25, 'center_y': .7}
+        text: u'劳动人口每人每秒生产1资源'
+        size_hint: .6, .05
+    ManageLabel:
+        pos_hint: {'x': .1, 'center_y': .5}
+        text: u'资源储量'
+        size_hint: .2, .05
+    ManageLabel:
+		id: _mines
+        pos_hint: {'x': .65, 'center_y': .5}
+        text: u'0'
+        size_hint: .3, .05
+    ManageButton:
+		id: _gather
+        pos_hint: {'center_x': .5, 'center_y': .3}
+        text: u'采集资源'
+        size_hint: .3, .05
+        #background_color: .9, .9, .9, 1
+        background_color: utils.get_color_from_hex('#F0FFF0')
+        color: 1, 1, 1, 1
+        font_size: '14sp'
+		#on_release: self.data["mines"] += self.data["buildings"]["castle"] * 5
+
+<RootWidget>
+    orientation: 'vertical'
+    FloatLayout:
+        canvas.before:
+            Color:
+                rgb: utils.get_color_from_hex('#FFFFCC')
+            Rectangle:
+                pos: self.pos
+                size: self.size
+        MainInfo:
+			id: _maininfo
+            padding: 1
+            size_hint: 1, .2
+            pos_hint: {'center_x': .5, 'center_y': .9}
+        ManagePage:
+			id: _managepage
+            size_hint: 1, .75
+            pos_hint: {'center_x': .5, 'center_y': .425}
+            #text: 'Middle'
+            #color: 0, 0, 0, 1
+        FuncMenu:
+            #padding: 1
+            size_hint: 1, .05
+            pos_hint: {'center_x': .5, 'center_y': .025}
+            
