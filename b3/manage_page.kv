@@ -1,0 +1,41 @@
+<ManageLabel@Label,ManageButton@Button>
+    font_size: '13sp'
+    font_name: "font/DroidSansFallback.ttf"
+    color: 0, 0, 0, 1
+
+<ManagePage>:
+    FloatLayout:
+        ManageLabel:
+            pos_hint: {'x': .1, 'center_y': .9}
+            text: u'劳动人口'
+            size_hint: .2, .05
+            #font_name: "font/DroidSansFallback.ttf"
+        ManageLabel:
+            id: _labors
+            pos_hint: {'x': .65, 'center_y': .9}
+            text: str(format(root.mines, ","))
+            size_hint: .2, .05
+        ManageLabel:
+            pos_hint: {'x': .25, 'center_y': .7}
+            text: u'劳动人口每人每秒生产1资源'
+            size_hint: .6, .05
+        ManageLabel:
+            pos_hint: {'x': .1, 'center_y': .5}
+            text: u'资源储量'
+            size_hint: .2, .05
+        ManageLabel:
+            id: _mines
+            pos_hint: {'x': .65, 'center_y': .5}
+            text: str(format(root.mines, ","))
+            size_hint: .3, .05
+        ManageButton:
+            id: _gather
+            pos_hint: {'center_x': .5, 'center_y': .3}
+            text: u'采集资源'
+            size_hint: .3, .05
+            #background_color: .9, .9, .9, 1
+            background_color: utils.get_color_from_hex('#F0FFF0')
+            color: 1, 1, 1, 1
+            font_size: '14sp'
+            #on_release: root.print_me()
+		

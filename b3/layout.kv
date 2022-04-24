@@ -1,0 +1,112 @@
+
+#:import utils kivy.utils
+#:import ManagePage manage_page
+#:import BuildingPage building_page
+#:import MilitaryPage military_page
+
+<MultiPage>:
+    ManagePage:
+        name: '_managepage'
+    BuildingPage:
+        name: '_buildingpage'
+    MilitaryPage:
+        name: '_militarypage'
+
+<InfoLabel@Label>
+    font_size: '13sp'
+    text_size: self.width-20, None
+    color: 0, 0, 0, 1
+    font_name: "font/DroidSansFallback.ttf"
+<MainInfo>
+    orientation: 'vertical'
+    BoxLayout:
+        InfoLabel:
+            text: '昵称'
+            text_size: None, None
+            halign: 'left'
+        InfoLabel:
+            text: '星河'
+        InfoLabel:
+            text: 'ID'
+        InfoLabel:
+            text: '999999'
+            text_size: self.width+20, None
+        InfoLabel:
+            text: '水晶'
+        InfoLabel:
+            text: '9999'
+            halign: 'left'
+            text_size: None, None
+    BoxLayout:
+        InfoLabel:
+            text: '资源'
+        InfoLabel:
+			id: _resources
+            text: '0'
+        InfoLabel:
+			id: _resources_increase
+            text: '0/s'
+    BoxLayout:
+        InfoLabel:
+            text: '人口'
+        InfoLabel:
+			id: _residents
+            text: '0'
+        InfoLabel:
+			id: _residents_increase
+            text: '0/m'
+
+<FuncButton@Button>
+    font_size: '18sp'
+    font_name: "font/DroidSansFallback.ttf"
+<FuncMenu>
+    FuncButton:
+        text: u'管理'
+        background_color: .3, .4, 0, 1
+        on_release: root.switch_screen(name="_managepage")
+    FuncButton:
+        text: u'建筑'
+        background_color: 0, 1, 0, 1
+        on_release: root.switch_screen(name="_buildingpage")
+    FuncButton:
+        text: u'军事'
+        background_color: .3, 0, .7, 1
+        on_release: root.switch_screen(name="_militarypage")
+    FuncButton:
+        text: u'战争'
+        background_color: .5, 0, .5, 1
+        #on_release: root.switch_screen(name="_warpage")
+    FuncButton:
+        text: u'商店'
+        background_color: 1, 0, 1, 1
+        #on_release: root.switch_screen(name="_storepage")
+    FuncButton:
+        text: u'消息'
+        background_color: 1, 0, 0, 1
+        #on_release: root.switch_screen(name="_newspage")
+
+<RootWidget>:
+    orientation: 'vertical'
+    canvas.before:
+        Color:
+            rgb: utils.get_color_from_hex('#FFFFCC')
+        Rectangle:
+            pos: self.pos
+            size: self.size
+    MainInfo:
+        id: _maininfo
+        #padding: 1
+        size_hint: 1, .2
+        pos_hint: {'center_x': .5, 'center_y': .9}
+    MultiPage:
+        id: _multipage
+        size_hint: 1, .75
+        pos_hint: {'center_x': .5, 'center_y': .4}
+        #pos_hint: {'center_x': .5, 'y': .05}
+        #text: 'Middle'
+        #color: 0, 0, 0, 1
+    FuncMenu:
+        id: _funcmenu
+        #padding: 1
+        size_hint: 1, .05
+        pos_hint: {'center_x': .5, 'center_y': .025}
